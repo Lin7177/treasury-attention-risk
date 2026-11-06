@@ -1,0 +1,16 @@
+[project]
+name = "treasury-attention-risk-cpu"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = ["numpy>=2,<3", "pandas>=2,<3", "matplotlib>=3.9,<4", "scipy>=1.16,<2", "torch==2.8.0+cpu"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[tool.uv]
+environments = ["sys_platform == 'win32' and platform_machine == 'AMD64'", "sys_platform == 'linux' and platform_machine == 'x86_64'"]

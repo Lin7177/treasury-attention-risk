@@ -1,0 +1,198 @@
+Original environment | V1-V4 baseline | synthetic and unit fixtures
+Python 3.12.14 PyTorch 2.8.0+cu128
+V1
+test_flat_is_wrong_but_not_in_brier_ba (test_experiment.DataTests.test_flat_is_wrong_but_not_in_brier_ba) ... ok
+test_logistic_stationarity_and_constant_feature (test_experiment.DataTests.test_logistic_stationarity_and_constant_feature) ... ok
+test_own_features_have_no_other_tenor (test_experiment.DataTests.test_own_features_have_no_other_tenor) ... ok
+test_film_initial_identity_matches_poststate (test_models.BoundaryModelTests.test_film_initial_identity_matches_poststate) ... ok
+test_seed_reproducibility (test_models.BoundaryModelTests.test_seed_reproducibility) ... ok
+test_shape_and_name_errors (test_models.BoundaryModelTests.test_shape_and_name_errors) ... ok
+test_shapes_and_finite_backward_all_models (test_models.BoundaryModelTests.test_shapes_and_finite_backward_all_models) ... ok
+test_state_changes_attention_weights_only_in_conditioned_model (test_models.BoundaryModelTests.test_state_changes_attention_weights_only_in_conditioned_model) ... ok
+test_state_enters_condition_but_not_unconditioned (test_models.BoundaryModelTests.test_state_enters_condition_but_not_unconditioned) ... ok
+test_tenor_identity_and_history_order_not_removed (test_models.BoundaryModelTests.test_tenor_identity_and_history_order_not_removed) ... ok
+test_token_mixer_is_permutation_equivariant (test_models.BoundaryModelTests.test_token_mixer_is_permutation_equivariant) ... ok
+test_uniform_qk_are_dead_not_capacity_matched (test_models.BoundaryModelTests.test_uniform_qk_are_dead_not_capacity_matched) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 2.601s
+
+OK
+V2
+test_bootstrap_deterministic_seed (test_analysis_target.AdditionalAnalysisGuards.test_bootstrap_deterministic_seed) ... ok
+test_brier_uses_actual_probabilities_not_clipped_values (test_analysis_target.AdditionalAnalysisGuards.test_brier_uses_actual_probabilities_not_clipped_values) ... ok
+test_primary_only_gets_conservative_macro_interval (test_analysis_target.AdditionalAnalysisGuards.test_primary_only_gets_conservative_macro_interval) ... ok
+test_flat_counts_wrong_but_not_in_binary_metrics (test_analysis_target.FrozenAnalysisTests.test_flat_counts_wrong_but_not_in_binary_metrics) ... ok
+test_identical_models_have_zero_intervals (test_analysis_target.FrozenAnalysisTests.test_identical_models_have_zero_intervals) ... ok
+test_joint_draw_preserves_folds_and_exact_pair_identity (test_analysis_target.FrozenAnalysisTests.test_joint_draw_preserves_folds_and_exact_pair_identity) ... ok
+test_macro_and_pooled_differ_for_year_constant_directions (test_analysis_target.FrozenAnalysisTests.test_macro_and_pooled_differ_for_year_constant_directions) ... ok
+test_matrix_metric_matches_scalar (test_analysis_target.FrozenAnalysisTests.test_matrix_metric_matches_scalar) ... ok
+test_missing_class_and_all_flat_are_undefined (test_analysis_target.FrozenAnalysisTests.test_missing_class_and_all_flat_are_undefined) ... ok
+test_missing_class_replicates_not_replaced_or_redrawn (test_analysis_target.FrozenAnalysisTests.test_missing_class_replicates_not_replaced_or_redrawn) ... ok
+test_all_frozen_budgets_and_restart (test_budget.BudgetTests.test_all_frozen_budgets_and_restart) ... ok
+test_duplicate_key_across_kinds_rejected (test_budget.BudgetTests.test_duplicate_key_across_kinds_rejected) ... ok
+test_empty_then_durable_claim_and_finish (test_budget.BudgetTests.test_empty_then_durable_claim_and_finish) ... ok
+test_external_duplicate_event_is_corrupt (test_budget.BudgetTests.test_external_duplicate_event_is_corrupt) ... ok
+test_failed_and_pending_claims_remain_charged_after_restart (test_budget.BudgetTests.test_failed_and_pending_claims_remain_charged_after_restart) ... ok
+test_invalid_kind_key_and_details_do_not_append (test_budget.BudgetTests.test_invalid_kind_key_and_details_do_not_append) ... ok
+test_lock_is_fail_closed_without_auto_retry (test_budget.BudgetTests.test_lock_is_fail_closed_without_auto_retry) ... ok
+test_partial_or_corrupt_journal_refuses_recovery (test_budget.BudgetTests.test_partial_or_corrupt_journal_refuses_recovery) ... ok
+test_terminal_transitions_cannot_be_rewritten (test_budget.BudgetTests.test_terminal_transitions_cannot_be_rewritten) ... ok
+test_duplicate_date_rejected (test_data_target.LoaderTests.test_duplicate_date_rejected) ... ok
+test_lag_endpoint_spread_and_no_axis_reordering (test_data_target.LoaderTests.test_lag_endpoint_spread_and_no_axis_reordering) ... ok
+test_sealed_values_not_numerically_parsed (test_data_target.LoaderTests.test_sealed_values_not_numerically_parsed) ... ok
+test_strict_annual_maturity_with_synthetic_ledger (test_data_target.LoaderTests.test_strict_annual_maturity_with_synthetic_ledger) ... ok
+test_constant_external_features_and_invalid_train (test_data_target.PCATests.test_constant_external_features_and_invalid_train) ... ok
+test_features_shapes_and_order (test_data_target.PCATests.test_features_shapes_and_order) ... ok
+test_transform_does_not_mutate_fitted_state (test_data_target.PCATests.test_transform_does_not_mutate_fitted_state) ... ok
+test_unique_training_days_and_train_only_fit (test_data_target.PCATests.test_unique_training_days_and_train_only_fit) ... ok
+test_all_variants_have_identical_explicit_target_residual (test_models_target.TargetCentricTests.test_all_variants_have_identical_explicit_target_residual) ... ok
+test_content_query_and_external_key_shape (test_models_target.TargetCentricTests.test_content_query_and_external_key_shape) ... ok
+test_fixed_mixer_and_norm_path_exactly_specified (test_models_target.TargetCentricTests.test_fixed_mixer_and_norm_path_exactly_specified) ... ok
+test_initialization_isolated_rng_and_stable_hash_seed (test_models_target.TargetCentricTests.test_initialization_isolated_rng_and_stable_hash_seed) ... ok
+test_initialization_pairs_and_common_backbone_bitwise (test_models_target.TargetCentricTests.test_initialization_pairs_and_common_backbone_bitwise) ... ok
+test_inputs_reject_state_and_wrong_history_shapes (test_models_target.TargetCentricTests.test_inputs_reject_state_and_wrong_history_shapes) ... ok
+test_masked_own_only_external_invariance_and_gradient (test_models_target.TargetCentricTests.test_masked_own_only_external_invariance_and_gradient) ... ok
+test_n4_equals_full_self_target_and_canonical_old_initialization (test_models_target.TargetCentricTests.test_n4_equals_full_self_target_and_canonical_old_initialization) ... ok
+test_shape_finite_backward_and_exact_parameter_counts (test_models_target.TargetCentricTests.test_shape_finite_backward_and_exact_parameter_counts) ... ok
+test_uniform_independent_of_qk_and_zero_task_gradient (test_models_target.TargetCentricTests.test_uniform_independent_of_qk_and_zero_task_gradient) ... ok
+test_constant_feature_logit (test_numerical.MetricTests.test_constant_feature_logit) ... ok
+test_flat (test_numerical.MetricTests.test_flat) ... ok
+test_missing_class (test_numerical.MetricTests.test_missing_class) ... ok
+test_prior_pooling (test_numerical.MetricTests.test_prior_pooling) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 1.101s
+
+OK
+V3
+test_complete_synthetic_pipeline_no_market (test_analysis_v3.AnalysisTests.test_complete_synthetic_pipeline_no_market) ... ok
+test_exact_keys_counts_order_and_missing (test_analysis_v3.AnalysisTests.test_exact_keys_counts_order_and_missing) ... ok
+test_joint_sampling_columns_and_no_crossyear (test_analysis_v3.AnalysisTests.test_joint_sampling_columns_and_no_crossyear) ... ok
+test_macro_not_pooled (test_analysis_v3.AnalysisTests.test_macro_not_pooled) ... ok
+test_non_circular_blocks_and_reproducibility (test_analysis_v3.AnalysisTests.test_non_circular_blocks_and_reproducibility) ... ok
+test_primary_flag_not_financial_advantage (test_analysis_v3.AnalysisTests.test_primary_flag_not_financial_advantage) ... ok
+test_reject_mixed_roles_future_and_bad_indices (test_analysis_v3.AnalysisTests.test_reject_mixed_roles_future_and_bad_indices) ... ok
+test_run_requires_complete_and_no_overwrite (test_analysis_v3.AnalysisTests.test_run_requires_complete_and_no_overwrite) ... ok
+test_seed_average_is_physical_arithmetic_and_complete (test_analysis_v3.AnalysisTests.test_seed_average_is_physical_arithmetic_and_complete) ... ok
+test_tail_count_ties_and_no_main_exclusion (test_analysis_v3.AnalysisTests.test_tail_count_ties_and_no_main_exclusion) ... ok
+test_units_pair_and_intervals_invariant (test_analysis_v3.AnalysisTests.test_units_pair_and_intervals_invariant) ... ok
+test_zero_difference_ci_all_zero (test_analysis_v3.AnalysisTests.test_zero_difference_ci_all_zero) ... ok
+test_zero_target_retained_and_invalid_forecast_rejected (test_analysis_v3.AnalysisTests.test_zero_target_retained_and_invalid_forecast_rejected) ... ok
+test_all_frozen_budgets_and_restart (test_budget.BudgetTests.test_all_frozen_budgets_and_restart) ... ok
+test_duplicate_key_across_kinds_rejected (test_budget.BudgetTests.test_duplicate_key_across_kinds_rejected) ... ok
+test_empty_then_durable_claim_and_finish (test_budget.BudgetTests.test_empty_then_durable_claim_and_finish) ... ok
+test_external_duplicate_event_is_corrupt (test_budget.BudgetTests.test_external_duplicate_event_is_corrupt) ... ok
+test_failed_and_pending_claims_remain_charged_after_restart (test_budget.BudgetTests.test_failed_and_pending_claims_remain_charged_after_restart) ... ok
+test_invalid_kind_key_and_details_do_not_append (test_budget.BudgetTests.test_invalid_kind_key_and_details_do_not_append) ... ok
+test_lock_is_fail_closed_without_auto_retry (test_budget.BudgetTests.test_lock_is_fail_closed_without_auto_retry) ... ok
+test_partial_or_corrupt_journal_refuses_recovery (test_budget.BudgetTests.test_partial_or_corrupt_journal_refuses_recovery) ... ok
+test_terminal_transitions_cannot_be_rewritten (test_budget.BudgetTests.test_terminal_transitions_cannot_be_rewritten) ... ok
+test_date_contract (test_data_v3.DataContractTests.test_date_contract) ... ok
+test_deduplicated_training_days (test_data_v3.DataContractTests.test_deduplicated_training_days) ... ok
+test_future_middle_target_missing_but_external_unneeded (test_data_v3.DataContractTests.test_future_middle_target_missing_but_external_unneeded) ... ok
+test_future_mutation_does_not_change_train_statistics (test_data_v3.DataContractTests.test_future_mutation_does_not_change_train_statistics) ... ok
+test_history_missing_not_compressed (test_data_v3.DataContractTests.test_history_missing_not_compressed) ... ok
+test_original_axis_endpoint_and_window (test_data_v3.DataContractTests.test_original_axis_endpoint_and_window) ... ok
+test_prior_exact_legacy_long_model_identifiers (test_data_v3.DataContractTests.test_prior_exact_legacy_long_model_identifiers) ... ok
+test_prior_flat_denominators (test_data_v3.DataContractTests.test_prior_flat_denominators) ... ok
+test_prior_reconstruction_not_same_as_state_change (test_data_v3.DataContractTests.test_prior_reconstruction_not_same_as_state_change) ... ok
+test_prior_strict_maturity_and_future_label_invariance (test_data_v3.DataContractTests.test_prior_strict_maturity_and_future_label_invariance) ... ok
+test_zero_target_and_constant_scale (test_data_v3.DataContractTests.test_zero_target_and_constant_scale) ... ok
+test_constructor_rng_and_shuffle_stream_isolation (test_models_v3.ModelGuards.test_constructor_rng_and_shuffle_stream_isolation) ... ok
+test_output_raw_positive_zero_target_and_batch_one (test_models_v3.ModelGuards.test_output_raw_positive_zero_target_and_batch_one) ... ok
+test_parameter_and_shared_initialization (test_models_v3.ModelGuards.test_parameter_and_shared_initialization) ... ok
+test_replay_determinism_input_guards_and_raw_floor_exposure (test_models_v3.ModelGuards.test_replay_determinism_input_guards_and_raw_floor_exposure) ... ok
+test_same_weight_uniform_counterfactual (test_models_v3.ModelGuards.test_same_weight_uniform_counterfactual) ... ok
+test_shared_recent_residual_and_other_history_paths (test_models_v3.ModelGuards.test_shared_recent_residual_and_other_history_paths) ... ok
+test_twenty_time_kv_latest_query_and_attention_shape (test_models_v3.ModelGuards.test_twenty_time_kv_latest_query_and_attention_shape) ... ok
+test_uniform_dead_qk_and_content_live_qk_task_gradients (test_models_v3.ModelGuards.test_uniform_dead_qk_and_content_live_qk_task_gradients) ... ok
+test_unit_qlike_constant_and_pair_difference (test_models_v3.ModelGuards.test_unit_qlike_constant_and_pair_difference) ... ok
+test_analytic_gradient_hessian (test_numerical_v3.NumericalTests.test_analytic_gradient_hessian) ... ok
+test_constant_and_zero_targets_kept (test_numerical_v3.NumericalTests.test_constant_and_zero_targets_kept) ... ok
+test_fault_keeps_har_trace (test_numerical_v3.NumericalTests.test_fault_keeps_har_trace) ... ok
+test_feature_information_and_order (test_numerical_v3.NumericalTests.test_feature_information_and_order) ... ok
+test_floor_fault_records_role_counts (test_numerical_v3.NumericalTests.test_floor_fault_records_role_counts) ... ok
+test_invalid_forecast_rejected (test_numerical_v3.NumericalTests.test_invalid_forecast_rejected) ... ok
+test_qlike_zero_and_mean_target (test_numerical_v3.NumericalTests.test_qlike_zero_and_mean_target) ... ok
+test_unit_rescaling_preserves_features_and_loss_differences (test_numerical_v3.NumericalTests.test_unit_rescaling_preserves_features_and_loss_differences) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 2.223s
+
+OK
+V4
+test_config_cannot_silently_change_threshold_or_family (test_analysis_v4.AnalysisV4Tests.test_config_cannot_silently_change_threshold_or_family) ... ok
+test_csv_and_partial_output_failures_lock_canonical_stage (test_analysis_v4.AnalysisV4Tests.test_csv_and_partial_output_failures_lock_canonical_stage) ... ok
+test_duplicate_missing_target_commonD_and_seed_keys (test_analysis_v4.AnalysisV4Tests.test_duplicate_missing_target_commonD_and_seed_keys) ... ok
+test_full_mock_pipeline_clock_and_artifacts (test_analysis_v4.AnalysisV4Tests.test_full_mock_pipeline_clock_and_artifacts) ... ok
+test_joint_bootstrap_no_crossperiod_circular_or_pair_randomness (test_analysis_v4.AnalysisV4Tests.test_joint_bootstrap_no_crossperiod_circular_or_pair_randomness) ... ok
+test_matrix_zero_units_domain (test_analysis_v4.AnalysisV4Tests.test_matrix_zero_units_domain) ... ok
+test_maturity_role_and_period_boundaries (test_analysis_v4.AnalysisV4Tests.test_maturity_role_and_period_boundaries) ... ok
+test_period_ratios_not_ratio_of_macro_or_daily_ratios (test_analysis_v4.AnalysisV4Tests.test_period_ratios_not_ratio_of_macro_or_daily_ratios) ... ok
+test_physical_arithmetic_ensemble_not_log_or_seed_metrics (test_analysis_v4.AnalysisV4Tests.test_physical_arithmetic_ensemble_not_log_or_seed_metrics) ... ok
+test_preflight_rejections_do_not_stop_market_or_start_clock (test_analysis_v4.AnalysisV4Tests.test_preflight_rejections_do_not_stop_market_or_start_clock) ... ok
+test_scientific_failure_persists_global_stop_and_blocks_future_launch (test_analysis_v4.AnalysisV4Tests.test_scientific_failure_persists_global_stop_and_blocks_future_launch) ... ok
+test_shared_diagonal_and_hedge_closed_form_cap (test_analysis_v4.AnalysisV4Tests.test_shared_diagonal_and_hedge_closed_form_cap) ... ok
+test_three_family_minimum_point_and_direction_evidence (test_analysis_v4.AnalysisV4Tests.test_three_family_minimum_point_and_direction_evidence) ... ok
+test_undefined_bootstrap_missing_and_no_refill (test_analysis_v4.AnalysisV4Tests.test_undefined_bootstrap_missing_and_no_refill) ... ok
+test_zero_target_and_fixed_tail_tie_all_rows_retained (test_analysis_v4.AnalysisV4Tests.test_zero_target_and_fixed_tail_tie_all_rows_retained) ... ok
+test_daily_prior_and_fixed_shrinkage (test_data_v4.DataV4Tests.test_daily_prior_and_fixed_shrinkage) ... ok
+test_future_1y_3y_missing_remains_eligible (test_data_v4.DataV4Tests.test_future_1y_3y_missing_remains_eligible) ... ok
+test_future_mutation_does_not_change_train_statistics (test_data_v4.DataV4Tests.test_future_mutation_does_not_change_train_statistics) ... ok
+test_future_target_middle_missing_rejected (test_data_v4.DataV4Tests.test_future_target_middle_missing_rejected) ... ok
+test_historical_any_input_missing_not_compressed (test_data_v4.DataV4Tests.test_historical_any_input_missing_not_compressed) ... ok
+test_invalid_dates_fail (test_data_v4.DataV4Tests.test_invalid_dates_fail) ... ok
+test_original_axis_window_and_three_target_matrix (test_data_v4.DataV4Tests.test_original_axis_window_and_three_target_matrix) ... ok
+test_synthetic_us_parser_filters_before_numeric (test_data_v4.DataV4Tests.test_synthetic_us_parser_filters_before_numeric) ... ok
+test_traditional_training_axis_includes_labels_not_compressed (test_data_v4.DataV4Tests.test_traditional_training_axis_includes_labels_not_compressed) ... ok
+test_training_rms_deduplicated_and_not_centered (test_data_v4.DataV4Tests.test_training_rms_deduplicated_and_not_centered) ... ok
+test_zero_rms_is_explicit_failure (test_data_v4.DataV4Tests.test_zero_rms_is_explicit_failure) ... ok
+test_zero_target_is_not_dropped (test_data_v4.DataV4Tests.test_zero_target_is_not_dropped) ... ok
+test_cross_run_same_job_blocked (test_financial_budget_v4.BudgetTests.test_cross_run_same_job_blocked) ... ok
+test_failure_consumed_and_blocks (test_financial_budget_v4.BudgetTests.test_failure_consumed_and_blocks) ... ok
+test_invalid_duration_is_rejected_without_finish_event (test_financial_budget_v4.BudgetTests.test_invalid_duration_is_rejected_without_finish_event) ... ok
+test_nonfinite_failure_diagnostic_does_not_erase_failure (test_financial_budget_v4.BudgetTests.test_nonfinite_failure_diagnostic_does_not_erase_failure) ... ok
+test_phase_quota (test_financial_budget_v4.BudgetTests.test_phase_quota) ... ok
+test_tamper_detected (test_financial_budget_v4.BudgetTests.test_tamper_detected) ... ok
+test_convex_har_synthetic (test_financial_budget_v4.FinancialTests.test_convex_har_synthetic) ... ok
+test_dcc_causal (test_financial_budget_v4.FinancialTests.test_dcc_causal) ... ok
+test_dcc_gradient_and_partial_missing (test_financial_budget_v4.FinancialTests.test_dcc_gradient_and_partial_missing) ... ok
+test_garch_causal (test_financial_budget_v4.FinancialTests.test_garch_causal) ... ok
+test_garch_gradient_and_missing (test_financial_budget_v4.FinancialTests.test_garch_gradient_and_missing) ... ok
+test_garch_synthetic_fit (test_financial_budget_v4.FinancialTests.test_garch_synthetic_fit) ... ok
+test_matrix_contract_rejects_invalid (test_financial_budget_v4.FinancialTests.test_matrix_contract_rejects_invalid) ... ok
+test_matrix_loss_unit_difference (test_financial_budget_v4.FinancialTests.test_matrix_loss_unit_difference) ... ok
+test_missing_garch_expected_step (test_financial_budget_v4.FinancialTests.test_missing_garch_expected_step) ... ok
+test_optimizer_deadline_synthetic (test_financial_budget_v4.FinancialTests.test_optimizer_deadline_synthetic) ... ok
+test_qmc_request_memory_cap (test_financial_budget_v4.FinancialTests.test_qmc_request_memory_cap) ... ok
+test_qmc_static_exact (test_financial_budget_v4.FinancialTests.test_qmc_static_exact) ... ok
+test_content_and_mlp_are_live_after_first_steps (test_models_v4.MatrixGuards.test_content_and_mlp_are_live_after_first_steps) ... ok
+test_coordinate_units_qlike_and_common_diagonal (test_models_v4.MatrixGuards.test_coordinate_units_qlike_and_common_diagonal) ... ok
+test_counterfactual_static_and_uniform_same_values_prior (test_models_v4.MatrixGuards.test_counterfactual_static_and_uniform_same_values_prior) ... ok
+test_exact_features_latest_five_and_global_sign_invariance (test_models_v4.MatrixGuards.test_exact_features_latest_five_and_global_sign_invariance) ... ok
+test_independent_day_sign_symmetry_and_all_overflow_paths (test_models_v4.MatrixGuards.test_independent_day_sign_symmetry_and_all_overflow_paths) ... ok
+test_invalid_shapes_prior_and_extreme_numerics (test_models_v4.MatrixGuards.test_invalid_shapes_prior_and_extreme_numerics) ... ok
+test_kernel_one_training_geometry_median_and_inputs (test_models_v4.MatrixGuards.test_kernel_one_training_geometry_median_and_inputs) ... ok
+test_parameter_counts_initial_function_and_dtype (test_models_v4.MatrixGuards.test_parameter_counts_initial_function_and_dtype) ... ok
+test_rng_streams_and_replay (test_models_v4.MatrixGuards.test_rng_streams_and_replay) ... ok
+test_value_target_indices_factor_five_and_zero (test_models_v4.MatrixGuards.test_value_target_indices_factor_five_and_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 7.797s
+
+OK
+Synthetic checks passed for V1-V5. No historical experiment was run.
+V5 added independent tests
+test_action_fallback_bounds_and_local_cap (test_hedge_v5.HedgeTests.test_action_fallback_bounds_and_local_cap) ... ok
+test_invalid_risk_rejected (test_hedge_v5.HedgeTests.test_invalid_risk_rejected) ... ok
+test_no_query_removes_query_but_keeps_recency_and_mask (test_hedge_v5.HedgeTests.test_no_query_removes_query_but_keeps_recency_and_mask) ... ok
+test_risk_matches_direct_quadratic_form_and_minimizer (test_hedge_v5.HedgeTests.test_risk_matches_direct_quadratic_form_and_minimizer) ... ok
+test_historical_runner_stops_before_loading_or_fitting (test_hedge_v5.ReplayGuardTests.test_historical_runner_stops_before_loading_or_fitting) ... ok
+test_memory_excludes_same_day_and_other_fold (test_hedge_v5.ReplayGuardTests.test_memory_excludes_same_day_and_other_fold) ... ok
+test_private_loader_rejects_even_existing_path_before_read (test_hedge_v5.ReplayGuardTests.test_private_loader_rejects_even_existing_path_before_read) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.033s
+
+OK

@@ -4,20 +4,24 @@
 
 ## 环境与入口
 
-原研究环境使用 Windows x64、Python 3.12 和锁定的 PyTorch 2.8.0 CUDA 12.8 wheel。合成入口只在 CPU 上运行，无需 GPU 或市场数据。依赖安装需要访问 PyPI 和 PyTorch wheel 源。
+原研究环境锁位于根目录，使用 Windows x64、Python 3.12 和 PyTorch 2.8.0 CUDA 12.8 wheel。便捷验收另用 `env/cpu/` 的独立 uv 锁，使用 Python 3.12 和同版本 CPU wheel，无需 NVIDIA 驱动、CUDA 或市场数据。CPU 锁已校验，本机 CPU 安装后的整套复测待完成。下列命令从仓库根目录运行。
 
 ```powershell
-uv sync --locked
-uv run --locked python smoke.py --output .scratch/synthetic
-foreach ($round in 1..4) {
-    uv run --locked python -m unittest discover -s "v$round"
+uv sync --project env/cpu --locked
+foreach ($round in 1..5) {
+    uv run --project env/cpu --locked python -B -m unittest discover -s "v$round" -v
     if ($LASTEXITCODE -ne 0) { throw "Tests failed for v$round" }
 }
+uv run --project env/cpu --locked python -B smoke.py --output .scratch/synthetic
 ```
+
+如使用根目录原研究依赖，执行 `uv sync --locked`，并移除以上 `uv run` 的 `--project env/cpu`。CPU 路径验证机制、数值、合成统计和绘图。真实历史复跑还需要授权输入及冻结材料。
 
 合成入口需要一个尚不存在的输出目录。输出包含测试状态、绘图夹具和标明合成证据的示意图。测试覆盖历史实现的关键数值行为，真实训练和旧账本均不在入口调用范围内。
 
 ## 论文与代码对应
+
+[逐项结论、消融、测试及真实复现条件](docs/PAPER_EVIDENCE.md) · [发布验收记录](docs/verification/README.md)
 
 | 论文证据 | 代码 | 校验路径 |
 |---|---|---|
