@@ -1,0 +1,120 @@
+{
+  "stage": "swarm_discovery_v3",
+  "status": "FROZEN_BEFORE_MARKET_OPTIMIZATION",
+  "date": "2026-11-05",
+  "date_cutoff": "2024-06-30",
+  "window": 20,
+  "target": "sum_squared_7Y_delta_t_through_t_plus_4",
+  "target_maturity_offset": 4,
+  "common_samples": 1851,
+  "evaluation_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "train_counts": [
+    1120,
+    1362,
+    1604
+  ],
+  "validation_count": 126,
+  "evaluation_counts": [
+    238,
+    238,
+    113
+  ],
+  "har_models": [
+    "OwnHAR",
+    "MultiHAR"
+  ],
+  "neural_models": [
+    "Fixed",
+    "Uniform",
+    "Content"
+  ],
+  "baselines": [
+    "Mean",
+    "SMA20",
+    "EWMA"
+  ],
+  "supervised_optimization_limit": 33,
+  "har_optimization_limit": 6,
+  "neural_optimization_limit": 27,
+  "pca_limit": 0,
+  "seeds": [
+    202611051,
+    202611052,
+    202611053
+  ],
+  "epochs": 20,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "gradient_clip": 1.0,
+  "d_model": 8,
+  "heads": 2,
+  "dropout": 0.0,
+  "parameter_counts": {
+    "Fixed": 915,
+    "Uniform": 857,
+    "Content": 857
+  },
+  "uniform_inactive_qk": 144,
+  "normalized_floor": 1e-08,
+  "har_l2_lambda": 0.01,
+  "har_l2_objective_coefficient": 0.005,
+  "har_max_iterations": 100,
+  "har_gradient_tolerance": 1e-08,
+  "har_armijo_c1": 0.0001,
+  "har_halfsteps": 40,
+  "ewma_lambda": 0.94,
+  "ewma_window": 20,
+  "primary_metric": "year_equal_macro_physical_qlike_difference",
+  "pairs": [
+    [
+      "Content",
+      "Uniform"
+    ],
+    [
+      "Content",
+      "Fixed"
+    ],
+    [
+      "MultiHAR",
+      "OwnHAR"
+    ],
+    [
+      "OwnHAR",
+      "EWMA"
+    ],
+    [
+      "MultiHAR",
+      "EWMA"
+    ],
+    [
+      "Fixed",
+      "MultiHAR"
+    ]
+  ],
+  "bootstrap_seed": 20261105,
+  "bootstrap_repetitions": 2000,
+  "block_lengths": [
+    5,
+    10,
+    20
+  ],
+  "bootstrap_mode": "annual_non_circular_shared_moving_blocks",
+  "primary_block": 10,
+  "primary_pair_confidence": 0.975,
+  "all_pair_confidence": 0.95,
+  "tail_fraction": 0.01,
+  "tail_tie_break": "date_ascending",
+  "side_prior": {
+    "window": 126,
+    "shrinkage_count": 20,
+    "optimization_fits": 0,
+    "old_eval_requests": 586
+  },
+  "allow_sealed_dates": false,
+  "allow_restricted_upload": false
+}

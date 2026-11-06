@@ -1,0 +1,22 @@
+[project]
+name = "transformer-effective-boundaries"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2,<3",
+    "pandas>=2,<3",
+    "matplotlib>=3.9,<4",
+    "torch==2.8.0+cu128",
+    "scipy>=1.16,<2",
+]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[tool.uv]
+environments = ["sys_platform == 'win32'"]

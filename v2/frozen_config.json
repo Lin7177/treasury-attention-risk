@@ -1,0 +1,103 @@
+{
+  "stage": "target_centric_v1",
+  "status": "FROZEN_DESIGN_NOT_IMPLEMENTATION_READY",
+  "date_cutoff": "2024-06-30",
+  "evaluation_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "eval_requests": [
+    237,
+    237,
+    112
+  ],
+  "eval_flat": [
+    8,
+    2,
+    2
+  ],
+  "train_nonflat": [
+    1084,
+    1322,
+    1557
+  ],
+  "validation_nonflat": [
+    124,
+    120,
+    125
+  ],
+  "validation_all": 126,
+  "window": 20,
+  "horizon": 5,
+  "additional_lag": 1,
+  "seeds": [
+    202611041,
+    202611042,
+    202611043
+  ],
+  "models": [
+    "F0_Own20Logit",
+    "F1_FinancialLogit",
+    "F2_PCALogit",
+    "N0_OwnMaskedFixed",
+    "N1_Fixed",
+    "N2_UniformCross",
+    "N3_ContentCross",
+    "N4_SelfTarget"
+  ],
+  "classifier_fit_budget": 54,
+  "neural_fit_budget": 45,
+  "linear_fit_budget": 9,
+  "pca_fit_budget": 3,
+  "real_fits_started": 0,
+  "epochs": 20,
+  "d_model": 16,
+  "heads": 2,
+  "dropout": 0,
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "batch_size": 64,
+  "gradient_clip": 1.0,
+  "pca_external_only": true,
+  "pca_components": 3,
+  "pca_unique_train_days": true,
+  "expected_feature_dimensions": {
+    "F0": 20,
+    "F1": 104,
+    "F2": 84
+  },
+  "expected_parameter_counts": {
+    "F0": 21,
+    "F1": 105,
+    "F2": 85,
+    "N0": 2652,
+    "N1": 2652,
+    "N2": 2657,
+    "N3": 2657,
+    "N4": 2657
+  },
+  "uniform_zero_task_gradient_parameters": 544,
+  "primary_metric": "year_equal_macro_balanced_accuracy",
+  "primary_contrast": [
+    "N3_ContentCross",
+    "N2_UniformCross"
+  ],
+  "strong_fixed_contrast": [
+    "N3_ContentCross",
+    "N1_Fixed"
+  ],
+  "bootstrap_seed": 20261104,
+  "bootstrap_repetitions": 2000,
+  "block_lengths": [
+    5,
+    10,
+    20
+  ],
+  "minimum_valid_replicates": 1900,
+  "requires_technical_gate_before_real_fit": true,
+  "allow_external_upload": false,
+  "allow_sealed_dates": false,
+  "logit_l2_lambda": 0.01,
+  "logit_objective_l2_coefficient": 0.005
+}

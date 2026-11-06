@@ -1,0 +1,145 @@
+{
+  "study_id": "V4_local_matrix_64",
+  "phase_limits": {
+    "exploration": {
+      "garch": 9,
+      "dcc": 3,
+      "har": 9,
+      "neural": 27
+    },
+    "confirmation": {
+      "garch": 3,
+      "dcc": 1,
+      "har": 3,
+      "neural": 9
+    }
+  },
+  "maximum_market_attempts": 64,
+  "maximum_compute_seconds": 14400,
+  "china_cutoff": "2024-06-30",
+  "china_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "target_positions": [
+    2,
+    3,
+    4
+  ],
+  "history": 20,
+  "horizon": 5,
+  "device": "cpu",
+  "dtype": "float64",
+  "seeds": [
+    2026110541,
+    2026110542,
+    2026110543
+  ],
+  "epochs": 40,
+  "batch": 64,
+  "lr": 0.003,
+  "weight_decay": 0.01,
+  "gradient_clip": 1,
+  "models": [
+    "Prior",
+    "Uniform",
+    "EWMA",
+    "Kernel",
+    "HAR_CCC",
+    "GARCH_CCC",
+    "DCC",
+    "Static",
+    "MLP",
+    "Content"
+  ],
+  "learned": [
+    "Static",
+    "MLP",
+    "Content"
+  ],
+  "primary_baselines": [
+    "Static",
+    "MLP",
+    "Kernel",
+    "EWMA",
+    "HAR_CCC",
+    "GARCH_CCC",
+    "DCC"
+  ],
+  "financial_baselines": [
+    "HAR_CCC",
+    "GARCH_CCC",
+    "DCC"
+  ],
+  "rho": 0.1,
+  "prior_identity_shrink": 0.01,
+  "time_lambda": 0.94,
+  "matrix_loss_divisor": 3,
+  "qmc": {
+    "coarse_exponent": 12,
+    "default_exponent": 13,
+    "max_exponent": 14,
+    "seed": 202611054,
+    "request_batch": 8,
+    "stein_tolerance": 0.0001,
+    "relative_frobenius_tolerance": 0.01,
+    "diagonal_calibrated": true
+  },
+  "hedge": {
+    "target_coordinate": 1,
+    "neighbor_coordinates": [
+      0,
+      2
+    ],
+    "ridge_fraction": 0.01,
+    "neighbor_l1_cap": 2,
+    "minimum_point_reduction": 0.05
+  },
+  "inference": {
+    "seed": 2026110540,
+    "blocks": [
+      10,
+      5,
+      20
+    ],
+    "replicates": 2000,
+    "nominal_interval": 0.95,
+    "primary_minimum_point_delta": -0.01,
+    "negative_subperiods_required": 2,
+    "full_family_size": 7,
+    "shape_family_size": 7,
+    "hedge_family_size": 3
+  },
+  "external": {
+    "source": "https://home.treasury.gov/treasury-daily-interest-rate-xml-feed",
+    "date_min": "1990-01-01",
+    "date_max": "2025-12-31",
+    "train_last_request_year": 2017,
+    "validation_first_year": 2018,
+    "validation_last_year": 2019,
+    "evaluation_first_year": 2020,
+    "evaluation_last_year": 2025,
+    "subperiods": [
+      [
+        2020,
+        2021
+      ],
+      [
+        2022,
+        2023
+      ],
+      [
+        2024,
+        2025
+      ]
+    ],
+    "min_train": 500,
+    "min_validation": 100,
+    "min_evaluation": 500,
+    "no_parameter_retraining_during_evaluation": true,
+    "requires_explicit_authorization": true
+  },
+  "evidence_level_china": "Retrospective exposed history; exploratory only",
+  "evidence_level_external": "One frozen external information-condition experiment, subject to source/PIT and cross-market limits"
+}
