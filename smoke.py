@@ -7,7 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 CHECKS = {
-    "v1": """
+    "direction_prediction": """
 import torch
 from models import build_model
 torch.manual_seed(712)
@@ -18,14 +18,14 @@ for name in ('T1_attention', 'B4_uniform'):
     loss.backward()
     assert torch.isfinite(loss)
 """,
-    "v2": """
+    "target_centric_attention": """
 import torch
 from models_target import build_model
 x = torch.randn(12, 20, 5, generator=torch.Generator().manual_seed(712))
 for name in ('N1', 'N2', 'N3', 'N4'):
     assert torch.isfinite(build_model(name, 712)(x)).all()
 """,
-    "v3": """
+    "risk_scale_forecasting": """
 import numpy as np
 import torch
 from models_v3 import build_model
@@ -40,7 +40,7 @@ xt = torch.tensor(np.concatenate([x, x*x], axis=-1), dtype=torch.float32)
 for name in ('Fixed', 'Uniform', 'Content'):
     assert torch.isfinite(build_model(name, 712)(xt)).all()
 """,
-    "v4": """
+    "joint_risk_forecasting": """
 import numpy as np
 import torch
 from financial_v4 import dcc_filter, matrix_qlike
@@ -57,7 +57,7 @@ with torch.no_grad():
     assert torch.isfinite(fixed_matrix(x[8:], prior, 'Uniform')).all()
 assert band
 """,
-    "v5": """
+    "hedging_decisions": """
 import json
 from pathlib import Path
 import sys
@@ -93,20 +93,28 @@ plot(summary, out / 'SYNTHETIC_pairs.png', synthetic=True)
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--with-tests", action="store_true", help="Also run each experiment’s unit tests.")
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
-    for version, check in CHECKS.items():
+    for experiment, check in CHECKS.items():
+        directory = ROOT / "experiments" / experiment
+        print(experiment, flush=True)
+        if args.with_tests:
+            subprocess.run(
+                [sys.executable, "-B", "-m", "unittest", "discover", "-s", str(directory)],
+                check=True,
+            )
         subprocess.run(
             [sys.executable, "-B", "-c", "import torch; torch.set_num_threads(1)\n" + check, str(output)],
-            cwd=ROOT / version,
+            cwd=directory,
             check=True,
         )
     (output / "status.json").write_text(
         json.dumps({"evidence": "synthetic_only", "passed": list(CHECKS)}, indent=2) + "\n",
         encoding="utf-8",
     )
-    print("Synthetic checks passed for V1–V5. No historical experiment was run.")
+    print("Synthetic checks passed for all five experiments.")
 
 
 if __name__ == "__main__":

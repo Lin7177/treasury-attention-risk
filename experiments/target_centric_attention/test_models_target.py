@@ -95,7 +95,7 @@ class TargetCentricTests(unittest.TestCase):
     def test_n4_equals_full_self_target_and_canonical_old_initialization(self):
         # Read-only import of self-written old model source, not its checkpoint.
         parent=Path(__file__).resolve().parents[1]
-        reference=parent/'v1'
+        reference=parent/'direction_prediction'
         sys.path.insert(0,str(reference))
         from models import build_model as old_build
         torch.manual_seed(self.seed);canonical=old_build('T1_attention')
